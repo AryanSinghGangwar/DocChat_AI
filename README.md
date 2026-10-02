@@ -1,4 +1,4 @@
-# 📄 DocChat AI: Full-Stack RAG Application
+# DocChat AI: Full-Stack RAG Application
 
 An intelligent document interaction pipeline that allows users to upload PDF documents and ask context-aware questions. It uses **Retrieval-Augmented Generation (RAG)** powered by Hugging Face Sentence Transformers and Google's Gemini 2.0 API. 
 
@@ -6,7 +6,7 @@ This repository is structured as a modern **microservices architecture** using F
 
 ---
 
-## 🧠 Interview Revision Guide: Core Concepts
+## Interview Revision Guide: Core Concepts
 
 This section is designed to help you revise the underlying AI and software engineering concepts used to build this project.
 
@@ -29,7 +29,7 @@ This section is designed to help you revise the underlying AI and software engin
 
 ---
 
-## ⚙️ Step-by-Step Implementation Under the Hood
+## Step-by-Step Implementation Under the Hood
 
 If asked how you built this from scratch, here is the exact flow of data through the system:
 
@@ -51,28 +51,28 @@ If asked how you built this from scratch, here is the exact flow of data through
 
 ---
 
-## 🏗️ Architecture & Pipeline Diagram
+## Architecture & Pipeline Diagram
 
 ```mermaid
 flowchart TD
-    User[User (Browser)] -->|Uploads PDF & Types Question| UI[Streamlit Frontend]
-    UI -->|REST API Calls| API[FastAPI Backend]
+    User["User (Browser)"] -->|Uploads PDF & Types Question| UI["Streamlit Frontend"]
+    UI -->|REST API Calls| API["FastAPI Backend"]
     
-    subgraph Backend [FastAPI Application (Port 8000)]
-        API -->|Extract| Parse[PDFPlumber]
-        Parse -->|Raw Text| Embed[Sentence Transformers]
-        Embed -->|Vector Match| Math[PyTorch Cosine Sim]
-        Math -->|Top Context| Builder[Prompt Builder]
+    subgraph Backend ["FastAPI Application (Port 8000)"]
+        API -->|Extract| Parse["PDFPlumber"]
+        Parse -->|Raw Text| Embed["Sentence Transformers"]
+        Embed -->|Vector Match| Math["PyTorch Cosine Sim"]
+        Math -->|Top Context| Builder["Prompt Builder"]
     end
     
-    Builder -->|Context + Query| External[Google Gemini API]
+    Builder -->|Context + Query| External["Google Gemini API"]
     External -->|Generated Answer| API
     API -->|JSON Response| UI
 ```
 
 ---
 
-## 🚀 Setup & Installation Instructions
+## Setup & Installation Instructions
 
 ### Prerequisites
 - Docker and Docker Compose
@@ -123,7 +123,7 @@ streamlit run app.py
 
 ---
 
-## 🔮 Future Enhancements (To discuss in interviews)
+## Future Enhancements (To discuss in interviews)
 If an interviewer asks "How would you scale this?", mention these:
 1. **Vector Database:** Move away from in-memory PyTorch matching to a dedicated DB like ChromaDB or Pinecone for scaling to millions of documents.
 2. **Advanced Chunking:** Instead of chunking by "page", use semantic chunking or LangChain's `RecursiveCharacterTextSplitter` with overlaps to ensure context isn't cut off mid-sentence.
