@@ -123,8 +123,3 @@ streamlit run app.py
 
 ---
 
-## Future Enhancements (To discuss in interviews)
-If an interviewer asks "How would you scale this?", mention these:
-1. **Vector Database:** Move away from in-memory PyTorch matching to a dedicated DB like ChromaDB or Pinecone for scaling to millions of documents.
-2. **Advanced Chunking:** Instead of chunking by "page", use semantic chunking or LangChain's `RecursiveCharacterTextSplitter` with overlaps to ensure context isn't cut off mid-sentence.
-3. **Conversational Memory:** Store past user questions in Redis or SQLite so the LLM remembers previous turns in the chat (Memory Windowing).
